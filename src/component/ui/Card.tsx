@@ -10,7 +10,6 @@ export default function Card({
   setSelectedArticle,
   isDarkMode,
   isAdmin,
-  newArticle
 }: {
   isAdmin?: boolean;
   isSmall?: boolean;
@@ -21,7 +20,6 @@ export default function Card({
   article: Itrees;
   isDarkMode: boolean;
   newArticle: Itrees[];
-
 }) {
 
   // Fonction pour ajouter un article au panier et le stocker dans le localStorage grace a zustand
@@ -41,7 +39,9 @@ export default function Card({
           alt={article.name}
           onClick={() => {
             if (setIsOpenDetail) setIsOpenDetail(true);
-            setSelectedArticle && setSelectedArticle(article);
+            if (setSelectedArticle) {
+              setSelectedArticle(article);
+            }
           }}
         />
 
@@ -57,18 +57,18 @@ export default function Card({
             (isAdmin ? (
               <div className="flex gap-2 p-2">
                 <button onClick={() => {
-                  setIsOpenedEditModal && setIsOpenedEditModal(true);
-                  setSelectedArticle && setSelectedArticle(article);
+                  if (setIsOpenedEditModal) setIsOpenedEditModal(true);
+                  if (setSelectedArticle) setSelectedArticle(article);
                 }}
-                  className="p-2 bg-yellow-500 rounded-lg hover:bg-yellow-600 transition md:w-8 lg:w-10 lg:h-12 cursor-pointer hover:scale-110">
+                className="p-2 bg-yellow-500 rounded-lg hover:bg-yellow-600 transition md:w-8 lg:w-10 lg:h-12 cursor-pointer hover:scale-110">
                   <img src="/images/icons/edit.svg" alt="Modifier" className="w-6 h-6 invert" />
                 </button>
 
                 <button onClick={() => {
-                  setIsOpenedDeleteModal && setIsOpenedDeleteModal(true);
-                  setSelectedArticle && setSelectedArticle(article);
+                  if (setIsOpenedDeleteModal) setIsOpenedDeleteModal(true);
+                  if (setSelectedArticle) setSelectedArticle(article);
                 }}
-                  className="p-2 bg-red-500/80 rounded-lg hover:bg-red-600 transition lg:w-10 lg:h-12 md:w-8 mr-2 cursor-pointer hover:scale-110">
+                className="p-2 bg-red-500/80 rounded-lg hover:bg-red-600 transition lg:w-10 lg:h-12 md:w-8 mr-2 cursor-pointer hover:scale-110">
                   <img src="/images/icons/trash.svg" alt="Supprimer" className="w-6 h-6 invert " />
                 </button>
               </div>
@@ -93,18 +93,20 @@ export default function Card({
             ))
           }
           <p className={`font-semibold text-xs min-[374px]:text-base 2xl:text-2xl ${isDarkMode ? "text-white" : "text-black"} ml-2`}>
-            {`Prix: ` + article.price + " €"}
+            {"Prix: " + article.price + " €"}
           </p>
         </div>
       </div>
       {/* Bouton détail */}
       <button className={`font - content border-2 ${isDarkMode ? "bg-dark-primary border-dark-primary" : "bg-light-primary border-light-primary"} rounded-sm md:rounded-md lg:rounded-lg drop-shadow-lg
   sm:p-1 sm:text-sm md:text-md  lg:tex-lg 2xl:text-2xl cursor-pointer hover`}
-        // Affiche le détail de l'article
-        onClick={() => {
-          if (setIsOpenDetail) setIsOpenDetail(true);
-          setSelectedArticle && setSelectedArticle(article);
-        }}>
+      // Affiche le détail de l'article
+      onClick={() => {
+        if (setIsOpenDetail) setIsOpenDetail(true);
+        if (setSelectedArticle) {
+          setSelectedArticle(article);
+        }
+      }}>
         Détail de l'arbre
       </button>
     </article>

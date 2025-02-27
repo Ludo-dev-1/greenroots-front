@@ -3,11 +3,11 @@ import { Itrees, Iorder, IUserInfos, ITracking } from "../../type/type";
 
 const fetchmethod = {
 
-  // Fecth des articles de l'utilisateur 
+  // Fecth des articles de l'utilisateur
   getArticlesByAdmin: async (): Promise<Itrees[]> => {
     try {
       const token = localStorage.getItem("token"); // Récupération du token
-      const response = await fetch(`https://donovangrout-server.eddi.cloud/articles`, {
+      const response = await fetch("https://donovangrout-server.eddi.cloud/api/articles", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -29,7 +29,7 @@ const fetchmethod = {
           ...article,
           Picture: {
             ...article.Picture,
-            url: article.Picture.url.replace("https://localhost:3000/", "https://donovangrout-server.eddi.cloud/")
+            url: article.Picture?.url.replace("https://localhost:3000/", "https://donovangrout-server.eddi.cloud/")
           },
           categories: article.categories || { name: "Catégorie par défaut" },
         }));
@@ -64,7 +64,7 @@ const fetchmethod = {
           ...article,
           Picture: {
             ...article.Picture,
-            url: article.Picture.url.replace("https://localhost:3000/", "https://donovangrout-server.eddi.cloud/")
+            url: article.Picture?.url.replace("https://localhost:3000/", "https://donovangrout-server.eddi.cloud/")
           },
           categories: article.categories || { name: "Catégorie par défaut" },
         }));
@@ -80,10 +80,10 @@ const fetchmethod = {
     }
   },
 
-  // Fetch de tous les articles (arbres, boutique) 
+  // Fetch de tous les articles (arbres, boutique)
   getArticle: async (): Promise<Itrees[]> => {
     try {
-      const response = await fetch(`https://donovangrout-server.eddi.cloud/boutique`, {
+      const response = await fetch("https://donovangrout-server.eddi.cloud/boutique", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -98,7 +98,7 @@ const fetchmethod = {
           ...article,
           Picture: {
             ...article.Picture,
-            url: article.Picture.url.replace("https://localhost:3000/", `https://donovangrout-server.eddi.cloud/`)
+            url: article.Picture?.url.replace("https://localhost:3000/", "https://donovangrout-server.eddi.cloud/")
           },
           categories: article.categories || { name: "Catégorie par défaut" },
         }));
@@ -130,7 +130,7 @@ const fetchmethod = {
 
       // Si data est un tableau, on le retourne directement,
       // sinon on tente de retourner data.orders ou un tableau vide
-      return data
+      return data;
     } catch (error) {
       console.error("Erreur lors du fetch des commandes :", error);
       return [];
@@ -160,6 +160,7 @@ const fetchmethod = {
         lastname: "",
         email: "",
         password: "",
+        // eslint-disable-next-line camelcase
         repeat_password: "",
       };
     }
@@ -181,7 +182,7 @@ const fetchmethod = {
 
       // Si data est un tableau, on le retourne directement,
       // sinon on tente de retourner data.orders ou un tableau vide
-      return data
+      return data;
     } catch (error) {
       console.error("Erreur lors du fetch des commandes :", error);
       return [];

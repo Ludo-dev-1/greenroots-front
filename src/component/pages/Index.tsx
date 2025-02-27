@@ -1,4 +1,4 @@
-// Imports 
+// Imports
 import { useEffect, useState } from "react";
 import bgAccueil from "../../assets/images/bgAccueil.webp";
 import Card from "../ui/Card";

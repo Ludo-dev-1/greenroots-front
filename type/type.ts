@@ -74,9 +74,9 @@ export interface CartState {
     clearCart: () => void;
 }
 
-//Définition du type d'un suivis d'article d'une commande 
+//Définition du type d'un suivis d'article d'une commande
 export interface IArticleTracking {
-    ArticleTrackings: any;
+    ArticleTrackings: IArticleTracking[];
     id: number;
     growth: string;
     status: string;
@@ -131,18 +131,20 @@ export interface IOrderDetail {
 
 export interface ITracking {
     id: number;
-    status: string;
+    status? : string;
     order_id: number;
     created_at: string;
     updated_at: string;
-
-
-
-    // ✅ Ajout des propriétés attendues
+    plantPlace?: string;
+    growth?: string;
+    nickname: string;
     name?: string; // Nom de l'article ou commande
     ArticleHasOrder?: ArticleHasOrder; // Association à la commande
     ArticleTrackings?: IArticleTracking[]; // Liste des suivis
     Picture?: Ipicture; // Image liée
+    plant_place?: string;
+    data?: string;
+
 }
 
 export interface IOrderTrackingDetail {

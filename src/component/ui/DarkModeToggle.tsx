@@ -1,4 +1,4 @@
-// fonction pour gérer le thème de l'app 
+// fonction pour gérer le thème de l'app
 export default function DarkModeToggle({
   isDarkMode,
   setIsDarkMode,

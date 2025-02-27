@@ -118,7 +118,8 @@ export default function Boutique({
                     setIsOpenedDeleteModal={setIsOpenedDeleteModal}
                     setSelectedArticle={setSelectedArticle}
                     setIsOpenDetail={setIsOpenDetail}
-                    isDarkMode={isDarkMode} />
+                    isDarkMode={isDarkMode}
+                    newArticle={articles} />
                 ))
               ) : (
                 <p className={`text-white text-6xl text-center ${isDarkMode ? "text-light-primary" : "text-black"}`}>Aucun article pour le moment</p>

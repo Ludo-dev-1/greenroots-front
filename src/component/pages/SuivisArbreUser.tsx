@@ -8,12 +8,12 @@ import TrackingArticleModal from "../ui/TrackingArticleModal";
 export default function SuivisArbresUser({ isDarkMode }: { isDarkMode: boolean }) {
 
   // State pour stocker les données de suivi des commandes
-  const [ordersTracking, setOrdersTracking] = useState<ITracking[]>([]);
+  const [ordersTracking, setOrdersTracking] = useState<IArticleTracking[]>([]);
   const [trackingModal, setTrackingModal] = useState<boolean>(false);
-  const [selectedTrackingId, setSelectedTrackingId] = useState<number | null>(null);
+  const [selectedTrackingId,] = useState<number | null>(null);
 
   // Récupération de l'ID de la commande depuis le localStorage
-  const orderId = localStorage.getItem('orderId');
+  const orderId = localStorage.getItem("orderId");
 
   // Fonction pour récupérer le suivi de la commande
   const getOrderTracking = async () => {
@@ -60,13 +60,13 @@ export default function SuivisArbresUser({ isDarkMode }: { isDarkMode: boolean }
               return {
                 ...tracking,
                 status: "À définir",
-                plant_place: "À définir",
+                plantPlace: "À définir",
               };
             }
             return tracking;
           }),
         }));
-        setOrdersTracking(transformedData);
+        setOrdersTracking(transformedData.flatMap(order => order.ArticleTrackings));
       } else {
         transformedData = data.articles || [];
         setOrdersTracking(transformedData);
@@ -128,31 +128,31 @@ export default function SuivisArbresUser({ isDarkMode }: { isDarkMode: boolean }
       {trackingModal && (
         <TrackingArticleModal
           selectedTrackingId={selectedTrackingId}
-          ordersTracking={ordersTracking}
           setTrackingModal={setTrackingModal}
-          setOrdersTracking={setOrdersTracking}
+
           trackingModal={trackingModal}
           refetchTracking={getOrderTracking}
           isDarkMode={isDarkMode}
-        />
+          ordersTracking={ordersTracking} setOrdersTracking={() => {
+            throw new Error("Function not implemented.");
+          }}        />
       )}
       <h1 className={`text-4xl font-bold text-center mb-10 ${isDarkMode ? "text-white" : "text-black"}`}>
         🌱 Suivi de vos arbres 🌿
       </h1>
 
 
-      <div className={`flex flex-wrap gap-20 m-auto h-fit w-full justify-center max-w-7xl rounded-lg `}>
+      <div className={"flex flex-wrap gap-20 m-auto h-fit w-full justify-center max-w-7xl rounded-lg "}>
         {/* Affichage des commandes suivies */}
         {ordersTracking.map((order) => {
-          if (!order.ArticleTrackings || !order.ArticleHasOrder) return null;
-          const quantity = order.ArticleHasOrder.quantity;
+          if (!order.ArticleTrackings || !order.article_has_order_id) return null;
+          const quantity = order.article_has_order_id;
 
           return order.ArticleTrackings.slice(0, quantity).map((tracking: IArticleTracking, index: number) => (
             <div
               key={`${order.id}-${tracking.id}-${index}`}
               className={`w-5/6 lg:w-lg h-full flex flex-col gap-4 border-zinc-200 p-6 justify-center rounded-lg border shadow-black shadow-lg ${isDarkMode ? "bg-dark-secondary text-white" : "bg-light-secondary text-black"} 2xl:grid 2xl:text-2xl`}
             >
-              <h2 className="text-center">🌿 {order.name}</h2>
               <h3 className="text-center">Surnom : {tracking.nickname}</h3>
               <div>
                 <img src={tracking.Picture?.url} alt="" />
