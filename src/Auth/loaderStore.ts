@@ -1,5 +1,5 @@
 // src/store/useLoaderStore.ts
-import { create } from 'zustand';
+import { create } from "zustand";
 
 // Définition du type pour l'état du loader
 type LoaderState = {
@@ -10,7 +10,7 @@ type LoaderState = {
 
 // Création du store Zustand pour gérer l'affichage du loader
 export const useLoaderStore = create<LoaderState>((set) => ({
-    isLoading: false, // État initial : le loader est désactivé
-    showLoader: () => set({ isLoading: true }), // Active le loader
-    hideLoader: () => set({ isLoading: false }), // Désactive le loader
+  isLoading: false, // État initial : le loader est désactivé
+  showLoader: () => set({ isLoading: true }), // Active le loader
+  hideLoader: () => set({ isLoading: false }), // Désactive le loader
 }));
