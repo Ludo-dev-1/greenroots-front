@@ -1,4 +1,4 @@
-// Imports 
+// Imports
 import Index from "./component/pages/Index";
 import Page404 from "./component/pages/Page404";
 import Boutique from "./component/pages/Boutique";
@@ -36,7 +36,7 @@ function App() {
   const [isOpenDetail, setIsOpenDetail] = useState<boolean>(false);
   // state de l'article séléctionné
   const [selectedArticle, setSelectedArticle] = useState<Itrees | null>(null);
-  // state du thème 
+  // state du thème
   const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
   // state de la modale de page protégée
   const [isprotectedModal, setIsProtectedModal] = useState<{ open: boolean, pageName: string | null }>({
@@ -44,7 +44,7 @@ function App() {
     pageName: null,
   });
 
-  // initialisation du loader de l'app 
+  // initialisation du loader de l'app
   const { isLoading, showLoader, hideLoader } = useLoaderStore();
 
 
@@ -101,19 +101,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Index setIsOpenDetail={setIsOpenDetail}
             setSelectedArticle={setSelectedArticle}
-            isOpenDetail={isOpenDetail}
             isDarkMode={isDarkMode}
-            setIsDarkMode={setIsDarkMode}
-
-
-          />} />
+            setIsDarkMode={setIsDarkMode} isOpenDetail={false}          />} />
 
           {/* Page Shop */}
           <Route path="/boutique" element={<Boutique
             setIsOpenDetail={setIsOpenDetail}
             setSelectedArticle={setSelectedArticle}
             selectedArticle={selectedArticle}
-            isOpenDetail={isOpenDetail}
             isDarkMode={isDarkMode}
           />} />
 
@@ -122,7 +117,7 @@ function App() {
           <Route path="/panier" element={<Panier isDarkMode={isDarkMode} />} />
           <Route path="/connexion" element={<Connexion isDarkMode={isDarkMode} />} />
           <Route path="/inscription" element={<Inscription isDarkMode={isDarkMode} />} />
-          <Route path="/cgu" element={<Cgu isDarkMode={isDarkMode} />} />
+          <Route path="/cgu" element={<Cgu />}/>
           <Route path="/paiement" element={<FakePayment isDarkMode={isDarkMode} />} />
 
           {/* Route protégée */}
