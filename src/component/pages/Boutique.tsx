@@ -88,9 +88,9 @@ export default function Boutique({
             <h2 className={`text-3xl font-title font-bold text-center ${isDarkMode ? "text-light-primary" : "text-black"} mb-6 2xl:text-5xl 2xl:pb-10 2xl:pt-10`}>🌱  Nos arbres</h2>
 
             {/* Sélecteur de catégories */}
-            <div className="flex flex-col gap-6 items-center md:flex-row md:justify-between md:gap-6 2xl:pb-20">
+            <div className="flex flex-col gap-6 items-center md:flex-row md:justify-between md:gap-6 2xl:pb-20 2xl:ml-12">
               <select onChange={(e) => setSelectedCategory(e.target.value)} name="categories" id="categ-id" className={`${isDarkMode ? "bg-dark-secondary text-white" : "bg-light-secondary text-black"} font-title text-center border border-white rounded-lg p-2 focus:outline-none focus:ring-2 transition md:py-2 md:px-2 md:text-2xl cursor-pointer`}>
-                <option className="bg-dark-primary text-white text-lg p-2" value="All">Catégories</option>
+                <option className="bg-dark-primary text-white text-lg p-2 " value="All">Catégories</option>
 
                 {/* Dunamisation des categories */}
                 {uniqueCategories.map((categoryName, index) => (

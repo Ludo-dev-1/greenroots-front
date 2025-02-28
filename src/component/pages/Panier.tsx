@@ -50,11 +50,11 @@ export default function Panier({ isDarkMode }: { isDarkMode: boolean }) {
               {/* Sélecteur de quantité */}
               <div className="flex flex-row items-center gap-3 lg:gap-5">
                 <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className={`size-8 flex items-center justify-center ${isDarkMode ? "bg-dark-secondary" : "bg-light-secondary"}  border rounded-lg p-1`}>
-                  <img className={`size-6 ${isDarkMode ? "invert" : ""} cursor-pointer hover:scale-110`} src="/images/icons/chevron-up.svg" alt="Augmenter" />
+                  <img className={`size-6 ${isDarkMode ? "invert" : ""} cursor-pointer hover:scale-110`} src="/icons/chevron-up.svg" alt="Augmenter" />
                 </button>
                 <p className="w-8 text-center text-lg font-bold lg:text-xl">{item.quantity}</p>
                 <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className={`size-8 flex items-center justify-center ${isDarkMode ? "bg-dark-secondary" : "bg-light-secondary"}  border rounded-lg p-1`}>
-                  <img className={`size-6 ${isDarkMode ? "invert" : ""} cursor-pointer hover:scale-110`} src="/images/icons/chevron-down.svg" alt="Diminuer" />
+                  <img className={`size-6 ${isDarkMode ? "invert" : ""} cursor-pointer hover:scale-110`} src="/icons/chevron-down.svg" alt="Diminuer" />
                 </button>
               </div>
 
@@ -63,7 +63,7 @@ export default function Panier({ isDarkMode }: { isDarkMode: boolean }) {
 
               {/* Bouton de suppression */}
               <button onClick={() => removeFromCart(item.id)} className="size-8 flex items-center justify-center bg-red-500 hover:bg-red-600 rounded-lg p-1 cursor-pointer hover:scale-110">
-                <img className="size-6 invert cursor-pointer hover:scale-110" src="/images/icons/trash.svg" alt="Supprimer" />
+                <img className="size-6 invert cursor-pointer hover:scale-110" src="/icons/trash.svg" alt="Supprimer" />
               </button>
             </div>
           ))

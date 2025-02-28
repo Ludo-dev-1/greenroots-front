@@ -35,7 +35,7 @@ export default function Index({ setIsOpenDetail, setSelectedArticle, isDarkMode,
   return (
     <div className="w-full max-w-screen min-h-screen overflow-hidden lg:pt-10 xl:pt-20">
 
-      <main className={`flex flex-col gap-6 text-center ${isDarkMode ? "dark:bg-dark-primary dark:text-white" : "bg-light-primary text-black"}`}>
+      <main className={`flex flex-col gap-6 text-center ${isDarkMode ? "bg-dark-primary text-white" : "bg-light-primary text-black"}`}>
 
         {/* Section d'introduction avec image de fond */}
         <section className="flex flex-col gap-6 ">

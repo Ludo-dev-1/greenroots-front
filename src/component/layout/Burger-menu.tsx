@@ -47,9 +47,9 @@ export default function BurgerMenu({ isOpened, setIsOpened, isDarkMode, setIsPro
         <div className="flex flex-col gap-6 items-center">
           <Link to="/cgu" onClick={() => setIsOpened(false)}><p className="text-center font-title font-bold md:text-xl md:size-md">CGU</p> </Link>
           <ul className={`flex flex-row gap-6 md:size-md ${isDarkMode && "invert"}`}>
-            <li><a><img className="w-6 h-6 " src="/images/icons/facebook.svg" alt="" /></a></li>
-            <li><a><img className="w-6 h-6 " src="/images/icons/instagram.svg" alt="" /></a></li>
-            <li><a><img className="w-6 h-6" src="/images/icons/linkedin.svg" alt="" /></a></li>
+            <li><a><img className="w-6 h-6 " src="/icons/facebook.svg" alt="" /></a></li>
+            <li><a><img className="w-6 h-6 " src="/icons/instagram.svg" alt="" /></a></li>
+            <li><a><img className="w-6 h-6" src="/icons/linkedin.svg" alt="" /></a></li>
           </ul>
         </div>
       </nav>

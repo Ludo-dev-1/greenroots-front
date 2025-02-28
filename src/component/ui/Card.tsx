@@ -1,5 +1,6 @@
 import { Itrees, Ipicture } from "../../../type/type.ts";
 import useCartStore from "../../Auth/cartStore.ts";
+import { showSuccessToast } from "../../../utils/toast.ts";
 
 export default function Card({
   article,
@@ -77,7 +78,7 @@ export default function Card({
               <button
                 className={`flex items-center ${isDarkMode ? "bg-dark-primary" : "bg-light-primary"} p-2 rounded-sm md:rounded-md lg:rounded-lg cursor-pointer hover:scale-110`}
                 // Ajoute l'article au panier
-                onClick={() =>
+                onClick={() => {
                   addToCart({
                     id: article.id.toString(), // Product.id est une chaîne de caractères
                     name: article.name,
@@ -85,7 +86,9 @@ export default function Card({
                     image: article.Picture ? article.Picture.url : "/images/default.jpg",
                     quantity: 1,
                     Picture: article.Picture as Ipicture,
-                  })
+                  });
+                  showSuccessToast("Article ajouté au panier !");
+                }
                 }
               >
                 <img src="/icons/shop-card.svg" alt="Ajouter au panier" className="w-6 h-6 invert" />
