@@ -91,7 +91,7 @@ export default function DesktopHeader({ isDarkMode, setIsDarkMode, setIsProtecte
       <div className={`flex items-center gap-4`}>
         {/* Lien vers le panier avec compteur */}
         <Link to="/panier" className="relative">
-          <img className={`h-8 ${isDarkMode && "invert"} cursor-pointer hover:scale-110 transition`} src="/src/assets/images/icons/shop-card.svg" alt="Panier" />
+          <img className={`h-8 ${isDarkMode && "invert"} cursor-pointer hover:scale-110 transition`} src="/src/assets/icons/shop-card.svg" alt="Panier" />
           {totalItems > 0 && (
             <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
               {totalItems}
