@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { showErrorToast, showSuccessToast } from "../../../utils/toast";
@@ -8,7 +9,7 @@ export default function Inscription({ isDarkMode }: { isDarkMode: boolean }) {
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
+  const [repeat_password, setRepeatPassword] = useState("");
   const navigate = useNavigate();
 
   // Fonction de gestion de la soumission du formulaire
@@ -17,7 +18,7 @@ export default function Inscription({ isDarkMode }: { isDarkMode: boolean }) {
     console.log("Inscription en cours...");
 
     // Vérification de la correspondance des mots de passe
-    if (password !== repeatPassword) {
+    if (password !== repeat_password) {
       showErrorToast("Les mots de passe ne correspondent pas");
       return;
     }
@@ -27,10 +28,15 @@ export default function Inscription({ isDarkMode }: { isDarkMode: boolean }) {
       const response = await fetch("https://donovangrout-server.eddi.cloud/inscription", {
         method: "POST",
         headers: { "Content-Type": "application/json", "x-api-key": "123456789", },
-        body: JSON.stringify({ firstname, lastname, email, password, repeatPassword }),
+        // eslint-disable-next-line camelcase
+        body: JSON.stringify({ firstname, lastname, email, password, repeat_password }),
       });
+      console.log(password,repeat_password);
+
 
       const data = await response.json();
+      // eslint-disable-next-line no-alert
+      alert(`${data.details}`);
       console.log(data);
 
       // Gestion des erreurs si la réponse du serveur n'est pas ok
@@ -123,7 +129,7 @@ export default function Inscription({ isDarkMode }: { isDarkMode: boolean }) {
             placeholder="Confirmez votre mot de passe"
             className={`border p-3 rounded-lg w-full ${isDarkMode ? "bg-dark-secondary text-white" : "bg-light-secondary text-black"} focus:outline-none focus:ring-2 focus:ring-cta`}
             onChange={(e) => setRepeatPassword(e.target.value)}
-            value={repeatPassword}
+            value={repeat_password}
             required
           />
         </div>
