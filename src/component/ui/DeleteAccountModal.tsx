@@ -80,7 +80,7 @@ export default function DeleteAccountModal({
         {/* Bouton de fermeture */}
         <img
           onClick={() => setIsOpenedDeleteAccountModal(false)}
-          src="/images/icons/close.svg"
+          src="/icons/close.svg"
           alt="Fermer la modale"
           className={`w-6 h-6 ${isDarkMode && "invert"} absolute top-4 right-4 cursor-pointer`}
         />

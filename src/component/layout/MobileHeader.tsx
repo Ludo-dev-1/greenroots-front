@@ -36,19 +36,19 @@ export default function MobileHeader({
 
         {/* ✅ Correction ici */}
         <Link to="/panier" className="relative">
-          <img className={`w-6 h-6 ${isDarkMode && "invert"}`} src="/images/icons/shop-card.svg" alt="Panier" />
+          <img className={`w-6 h-6 ${isDarkMode && "invert"}`} src="/icons/shop-card.svg" alt="Panier" />
           {totalItems > 0 && (
             <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
               {totalItems}
             </span>
           )}
         </Link>
-        <Link to="/"><img className="h-18 w-18 rounded-sm" src="src/assets/images/logo.webp" alt="Logo" /></Link>
+        <Link to="/"><img className="h-18 w-18 rounded-sm" src="/icons/logo.webp" alt="Logo" /></Link>
 
-        <img onClick={() => setIsModalOpened(prev => !prev)} className={`w-6 h-6 ${isDarkMode && "invert"}`} src="/images/icons/user.svg" alt="Profil" />
+        <img onClick={() => setIsModalOpened(prev => !prev)} className={`w-6 h-6 ${isDarkMode && "invert"}`} src="/icons/user.svg" alt="Profil" />
 
         {/* BurgerMenu au click on met l'inverse de isOpened */}
-        <img onClick={() => setIsOpened(prev => !prev)} className={`w-6 h-6 ${isDarkMode && "invert"}`} src="/images/icons/burger-menu.svg" alt="Menu" />
+        <img onClick={() => setIsOpened(prev => !prev)} className={`w-6 h-6 ${isDarkMode && "invert"}`} src="/icons/burger-menu.svg" alt="Menu" />
       </div>
 
     </header>

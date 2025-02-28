@@ -76,7 +76,7 @@ export default function DetailOrderModal({
       >
         <img
           onClick={() => setIsOpenOrderDetail(false)}
-          src="/images/icons/close.svg"
+          src="/icons/close.svg"
           alt="Fermer la modale"
           className={`w-6 h-6 ${isDarkMode && "invert"
           } absolute top-4 right-4 cursor-pointer`}

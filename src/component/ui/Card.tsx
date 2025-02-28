@@ -61,7 +61,7 @@ export default function Card({
                   if (setSelectedArticle) setSelectedArticle(article);
                 }}
                 className="p-2 bg-yellow-500 rounded-lg hover:bg-yellow-600 transition md:w-8 lg:w-10 lg:h-12 cursor-pointer hover:scale-110">
-                  <img src="/images/icons/edit.svg" alt="Modifier" className="w-6 h-6 invert" />
+                  <img src="/icons/edit.svg" alt="Modifier" className="w-6 h-6 invert" />
                 </button>
 
                 <button onClick={() => {
@@ -69,7 +69,7 @@ export default function Card({
                   if (setSelectedArticle) setSelectedArticle(article);
                 }}
                 className="p-2 bg-red-500/80 rounded-lg hover:bg-red-600 transition lg:w-10 lg:h-12 md:w-8 mr-2 cursor-pointer hover:scale-110">
-                  <img src="/images/icons/trash.svg" alt="Supprimer" className="w-6 h-6 invert " />
+                  <img src="/icons/trash.svg" alt="Supprimer" className="w-6 h-6 invert " />
                 </button>
               </div>
             ) : (
@@ -88,7 +88,7 @@ export default function Card({
                   })
                 }
               >
-                <img src="/images/icons/shop-card.svg" alt="Ajouter au panier" className="w-6 h-6 invert" />
+                <img src="/icons/shop-card.svg" alt="Ajouter au panier" className="w-6 h-6 invert" />
               </button>
             ))
           }

@@ -198,7 +198,7 @@ export default function TrackingArticleModal({
         {/* Bouton de fermeture */}
         <img
           onClick={() => setTrackingModal(false)}
-          src="/images/icons/close.svg"
+          src="/icons/close.svg"
           alt="Fermer la modale"
           className={`w-6 h-6 ${isDarkMode && "invert"} absolute top-4 right-4 cursor-pointer`}
         />

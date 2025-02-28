@@ -34,7 +34,7 @@ export default function DetailModal({
         {/* Bouton de fermeture */}
         <img
           onClick={() => setIsOpenDetail(false)}
-          src="/images/icons/close.svg"
+          src="/icons/close.svg"
           alt="Fermer la modale"
           className={`w-6 h-6 ${isDarkMode && "invert"} absolute top-4 right-4 cursor-pointer `}
         />
@@ -81,7 +81,7 @@ export default function DetailModal({
                 id: article.id.toString(), // Product.id est une chaîne de caractères
                 name: article.name,
                 price: article.price,
-                image: article.Picture ? article.Picture.url : "/images/default.jpg",
+                image: article.Picture ? article.Picture.url : "/default.jpg",
                 quantity: 1, // Par défaut, on ajoute 1 unité
                 Picture: article.Picture as Ipicture,
               })

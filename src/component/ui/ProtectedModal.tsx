@@ -28,7 +28,7 @@ export default function ProtectedModal({ isDarkMode, setIsProtectedModal, pageNa
           onClick={() => setIsProtectedModal({ open: false, pageName: "" })}
         >
           <img
-            src="/images/icons/close.svg"
+            src="/icons/close.svg"
             alt="Fermer la modale"
             className={`w-6 h-6 ${isDarkMode ? "invert" : ""}`}
           />

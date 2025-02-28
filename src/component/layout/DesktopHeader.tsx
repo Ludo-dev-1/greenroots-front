@@ -53,7 +53,7 @@ export default function DesktopHeader({ isDarkMode, setIsDarkMode, setIsProtecte
       <div className={`flex items-center gap-10 text-white font-title text-xl 2xl:text-3xl`}>
         {/* Logo */}
         <Link to="/">
-          <img className="h-16 rounded-lg 2xl:w-25 2xl:h-25" src="src/assets/images/logo.webp" alt="Logo" />
+          <img className="h-16 rounded-lg 2xl:w-25 2xl:h-25" src="/icons/logo.webp" alt="Logo" />
         </Link >
       </div>
       {/* Navigation */}
@@ -91,7 +91,7 @@ export default function DesktopHeader({ isDarkMode, setIsDarkMode, setIsProtecte
       <div className={`flex items-center gap-4`}>
         {/* Lien vers le panier avec compteur */}
         <Link to="/panier" className="relative">
-          <img className={`h-8 ${isDarkMode && "invert"} cursor-pointer hover:scale-110 transition`} src="/public/icons/shop-card.svg" alt="Panier" />
+          <img className={`h-8 ${isDarkMode && "invert"} cursor-pointer hover:scale-110 transition`} src="/icons/shop-card.svg" alt="Panier" />
           {totalItems > 0 && (
             <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
               {totalItems}
@@ -109,7 +109,7 @@ export default function DesktopHeader({ isDarkMode, setIsDarkMode, setIsProtecte
             <Link to="/compte" >
 
               <button className={` flex gap-4 px-4 py-1 rounded-lg cursor-pointer hover:scale-110 text-lg ${isDarkMode ? "bg-dark-primary text-white" : "bg-light-primary text-black"}  `}>
-                <img className={`w-8 h-8 lg:w-6 lg:h-6 ${isDarkMode && "invert"} m-auto`} src="/images/icons/user.svg" alt="profil" />
+                <img className={`w-8 h-8 lg:w-6 lg:h-6 ${isDarkMode && "invert"} m-auto`} src="/icons/user.svg" alt="profil" />
                 <p>{userInfos?.firstname} {userInfos?.lastname} </p>
               </button>
 
@@ -124,7 +124,7 @@ export default function DesktopHeader({ isDarkMode, setIsDarkMode, setIsProtecte
                 }, 100)
               }}
             >
-              <img className={`w-8 h-8 lg:w-6 lg:h-6 ${isDarkMode && "invert"} m-auto`} src="./images/icons/logout.svg" alt="logo logout" />
+              <img className={`w-8 h-8 lg:w-6 lg:h-6 ${isDarkMode && "invert"} m-auto`} src="/icons/logout.svg" alt="logo logout" />
               Déconnexion
             </button>
           </div>

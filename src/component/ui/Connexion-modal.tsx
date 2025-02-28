@@ -33,7 +33,7 @@ export default function ConnexionModal({ isModalOpened, setIsModalOpened, isDark
         <img
           onClick={() => setIsModalOpened(false)}
           className={`w-8 h-8 absolute top-4 right-4 cursor-pointer md:w-10 md:h-10 md:top-9 md:right-6 ${isDarkMode && "invert"}`}
-          src="/images/icons/close.svg"
+          src="/icons/close.svg"
           alt="Fermer"
         />
 

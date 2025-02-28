@@ -107,7 +107,7 @@ export default function Boutique({
             </div>
 
             {/* Affichage des articles */}
-            <div className="flex flex-col gap-6 items-center min-md:grid min-md:grid-cols-3 md:gap-6 lg:gap-2 2xl:grid-cols-4 2xl:gap-10">
+            <div className="flex flex-col gap-6 items-center min-md:grid min-md:grid-cols-3 md:gap-6 lg:gap-2  2xl:grid-cols-3 2xl:gap-10">
               {articles.length > 0 ? (
                 filteredArticles.map((article) => (
                   <Card
