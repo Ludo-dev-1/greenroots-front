@@ -36,7 +36,7 @@ export default function Inscription({ isDarkMode }: { isDarkMode: boolean }) {
 
       const data = await response.json();
       // eslint-disable-next-line no-alert
-      alert(`${data.details}`);
+    
       console.log(data);
 
       // Gestion des erreurs si la réponse du serveur n'est pas ok
