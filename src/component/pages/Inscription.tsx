@@ -2,8 +2,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { showErrorToast, showSuccessToast } from "../../../utils/toast";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function Inscription({ isDarkMode }: { isDarkMode: boolean }) {
+
+  // state pour afficher le mot de passe en clair ou non
+  const [showPassword, setShowPassword] = useState(false);
+
   // Déclaration des états pour stocker les valeurs des champs du formulaire
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -28,20 +33,20 @@ export default function Inscription({ isDarkMode }: { isDarkMode: boolean }) {
       const response = await fetch("https://donovangrout-server.eddi.cloud/inscription", {
         method: "POST",
         headers: { "Content-Type": "application/json", "x-api-key": "123456789", },
-        // eslint-disable-next-line camelcase
+
         body: JSON.stringify({ firstname, lastname, email, password, repeat_password }),
       });
       console.log(password,repeat_password);
 
 
       const data = await response.json();
-      // eslint-disable-next-line no-alert
-    
+
+
       console.log(data);
 
       // Gestion des erreurs si la réponse du serveur n'est pas ok
       if (!response.ok) {
-        showErrorToast(data.error || "Une erreur est survenue.");
+        showErrorToast(data.details || "Une erreur est survenue.");
         return;
       }
 
@@ -105,25 +110,44 @@ export default function Inscription({ isDarkMode }: { isDarkMode: boolean }) {
         </div>
 
         {/* Champ de saisie du mot de passe */}
-        <div className="flex flex-col mx-auto 2xl:w-2xl 2xl:text-2xl sm:w-sm lg:w-lg md:w-md ">
-          <label htmlFor="password" className="font-semibold mb-1 md:text-xl">Mot de passe</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Choisissez un mot de passe"
-            className={`border p-3 rounded-lg w-full ${isDarkMode ? "bg-dark-secondary text-white" : "bg-light-secondary text-black"} focus:outline-none focus:ring-2 focus:ring-cta`}
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            required
-          />
+        <div className="relative flex flex-col mx-auto 2xl:w-2xl 2xl:text-2xl sm:w-sm lg:w-lg md:w-md ">
+          <label htmlFor="password" className="font-semibold mb-1 md:text-xl">
+        Mot de passe
+          </label>
+          <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"} // Affichage du mot de passe en clair ou non
+              id="password"
+              name="password"
+              placeholder="Choisissez un mot de passe"
+              className={`border p-3 rounded-lg w-full ${isDarkMode ? "bg-dark-secondary text-white" : "bg-light-secondary text-black"} focus:outline-none focus:ring-2 focus:ring-cta`}
+
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              required
+            />
+            {/* Bouton pour afficher/masquer le mot de passe */}
+            <button
+              type="button"
+              className="absolute inset-y-0 right-3 flex items-center"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </button>
+          </div>
         </div>
+        <span className="italic mx-10  md:flex md:flex-col md:mx-auto 2xl:w-2xl 2xl:text-2xl sm:w-sm lg:w-lg md:w-md ">
+          <p >
+          Le mot de passe doit contenir au moins 14 caractères et au moins une lettre minuscule, une lettre majuscule, un chiffre et un caractère spécial parmi : !, @, #, $, %, ^, &, *.
+          </p>
+        </span>
+
 
         {/* Champ de confirmation du mot de passe */}
-        <div className="flex flex-col mx-auto 2xl:w-2xl 2xl:text-2xl sm:w-sm lg:w-lg md:w-md  ">
+        <div className=" relative flex flex-col mx-auto 2xl:w-2xl 2xl:text-2xl sm:w-sm lg:w-lg md:w-md  ">
           <label htmlFor="confirmation" className="font-semibold mb-1 md:text-xl ">Confirmer le mot de passe</label>
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             id="confirmation"
             name="confirmation"
             placeholder="Confirmez votre mot de passe"
@@ -132,6 +156,13 @@ export default function Inscription({ isDarkMode }: { isDarkMode: boolean }) {
             value={repeat_password}
             required
           />
+          <button
+            type="button"
+            className="absolute inset-y-13 right-3 flex items-center"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+          </button>
         </div>
 
         {/* Bouton de soumission du formulaire */}
