@@ -52,7 +52,7 @@ export default function Boutique({
       fetchmethod.getArticle().then((data) => setArticles(data));
     }
     setIsLoading(false);
-  }, []);
+  }, [isAdmin]);
 
   // Récupération des catégories uniques des articles
   const uniqueCategories = Array.from(

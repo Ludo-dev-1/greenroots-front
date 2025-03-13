@@ -8,7 +8,7 @@ interface DetailModalOrderProps {
     setIsOpenOrderDetail: React.Dispatch<React.SetStateAction<boolean>>;
     isOpenedOrderModal: boolean;
     isDarkMode: boolean;
-    orders: Iorder;
+    orders?: Iorder;
 }
 
 export default function DetailOrderModal({
@@ -18,12 +18,15 @@ export default function DetailOrderModal({
   orders,
 }: DetailModalOrderProps) {
 
+  console.log("Orders reçue :", orders);
+
   const navigate = useNavigate();
   const { isAdmin } = useAuthStore();
   const [orderDetail, setOrderDetail] = useState<IOrderDetail | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    if (!orders || !orders.id) return; // Si pas de commande ou pas d'id, on sort de la fonction
     const fetchOrderDetails = async () => {
       setLoading(true);
       try {
@@ -32,6 +35,8 @@ export default function DetailOrderModal({
           : (await fetchmethod.getOrderDetailUser(orders.id)) as unknown as IOrderDetail ;
 
         setOrderDetail(data);
+        console.log(data);
+
       } catch (error) {
         console.error("Erreur lors de la récupération des détails :", error);
       } finally {
@@ -42,7 +47,16 @@ export default function DetailOrderModal({
     if (isOpenedOrderModal) {
       fetchOrderDetails();
     }
-  }, [orders.id, isAdmin, isOpenedOrderModal]);
+  }, [orders && orders.id, isAdmin, isOpenedOrderModal]);
+
+
+  if (!orders || !orderDetail) {
+    return (
+      <div className="text-center">
+        <p>Aucune commande disponible.</p>
+      </div>
+    );
+  }
 
   if (loading) {
     return (
@@ -52,13 +66,6 @@ export default function DetailOrderModal({
     );
   }
 
-  if (!orderDetail) {
-    return (
-      <div className="text-center">
-        <p>Aucune commande disponible.</p>
-      </div>
-    );
-  }
 
   return (
     <>
@@ -72,7 +79,8 @@ export default function DetailOrderModal({
       <div
         className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ${isDarkMode ? "bg-dark-secondary" : "bg-light-accent"
         } w-5/6 p-6 rounded-lg shadow-lg text-white flex flex-col gap-4 z-20 mt-8 2xl:w-2xl 2xl:text-2xl md:w-md lg:w-lg`}
-        style={{ maxHeight: "80vh", overflowY: "auto", }}
+        style={{ maxHeight: "80vh", overflowY: "auto" }}
+        onClick={(e) => e.stopPropagation()} // Empêche la propagation du clic sur le modal
       >
         <img
           onClick={() => setIsOpenOrderDetail(false)}
@@ -87,13 +95,13 @@ export default function DetailOrderModal({
           className={`text-2xl font-bold text-center ${isDarkMode ? "text-white" : "text-black"
           }`}
         >
-                    Commande #{orderDetail.id}
+                    Commande #{orders.id}
         </h1>
         <h2
           className={`text-xl font-semibold text-center ${isDarkMode ? "text-white" : "text-black"
           }`}
         >
-          {orderDetail.article_summary}
+          {orders.article_summary}
         </h2>
 
         <div
@@ -102,7 +110,7 @@ export default function DetailOrderModal({
         >
           <p>
             <strong>Date d'achat :</strong>{" "}
-            {new Date(orderDetail.date).toLocaleDateString()}
+            {new Date(orders.date).toLocaleDateString()}
           </p>
           <p>
             <strong>Prix total :</strong> {orderDetail.total_price} €
@@ -126,22 +134,26 @@ export default function DetailOrderModal({
         {/* Liste des articles */}
         <div className={`mt-4 mb-4 ${!isDarkMode && "text-black"}`}>
           <h3 className=" font-semibold mb-2">Articles commandés :</h3>
-          {orderDetail.articles.map((article) => (
-            <div
-              key={article.id}
-              className={`p-3 mb-2 rounded ${isDarkMode ? "bg-dark-accent" : "bg-light-secondary"
-              }`}
-            >
-              <p className="font-bold">{article.name}</p>
-              <p>{article.description}</p>
-              <p>
-                <strong>Prix :</strong> {article.price} €
-              </p>
-              <p>
-                <strong>Quantité :</strong> {article.ArticleHasOrder.quantity}
-              </p>
-            </div>
-          ))}
+          {orderDetail?.articles?.length > 0 ? (
+            orderDetail.articles.map((article) => (
+              <div
+                key={article.id}
+                className={`p-3 mb-2 rounded ${isDarkMode ? "bg-dark-accent" : "bg-light-secondary"
+                }`}
+              >
+                <p className="font-bold">{article.name}</p>
+                <p>{article.description}</p>
+                <p>
+                  <strong>Prix :</strong> {article.price} €
+                </p>
+                <p>
+                  <strong>Quantité :</strong> {article.ArticleHasOrder.quantity}
+                </p>
+              </div>
+            ))
+          ) : (
+            <p>Aucun article trouvé.</p>
+          )}
         </div>
 
         {/* Bouton de navigation */}

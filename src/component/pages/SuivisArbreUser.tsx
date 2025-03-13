@@ -30,7 +30,7 @@ export default function SuivisArbresUser({ isDarkMode }: { isDarkMode: boolean }
 
       // Requête API pour récupérer le suivi des commandes
       const response = await fetch(
-        `https://donovangrout-server.eddi.cloud/${isAdmin ? "api" : "compte"}/commandes/${orderId}/suivi?timestamp=${Date.now()}`,
+        `http://localhost:3000/${isAdmin ? "api" : "compte"}/commandes/${orderId}/suivi?timestamp=${Date.now()}`,
         {
           method: "GET",
           headers: {

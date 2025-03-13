@@ -75,7 +75,7 @@ export default function UserSpace({ isDarkMode }: { isDarkMode: boolean }) {
     );
 
     try {
-      const response = await fetch("https://donovangrout-server.eddi.cloud/compte", {
+      const response = await fetch("localhost:3000/compte", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

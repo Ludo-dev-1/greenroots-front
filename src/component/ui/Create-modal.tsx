@@ -92,12 +92,11 @@ export default function CreateModal({
       console.log("🟢 Données envoyées à l'API :", dataToSend);
 
       try {
-        const response = await fetch("https://donovangrout-server.eddi.cloud/api/articles", {
+        const response = await fetch("http://localhost:3000/api/articles", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "x-api-key":
-                        "123456789",
+            "x-api-key": "123456789",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
           body: JSON.stringify(dataToSend),

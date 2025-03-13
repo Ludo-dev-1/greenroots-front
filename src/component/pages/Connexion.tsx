@@ -21,7 +21,7 @@ export default function Connexion({ isDarkMode }: { isDarkMode: boolean }) {
 
     try {
       // Envoi des identifiants à l'API
-      const response = await fetch("https://donovangrout-server.eddi.cloud/connexion", {
+      const response = await fetch("http://localhost:3000/connexion", {
         method: "POST",
         headers: { "Content-Type": "application/json", "x-api-key": "123456789", },
         body: JSON.stringify({ email, password }),

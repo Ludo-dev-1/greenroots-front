@@ -20,7 +20,7 @@ export default function DeleteModal({
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`https://donovangrout-server.eddi.cloud/api/articles/${article.id}`, {
+      const response = await fetch(`http://localhost:3000/api/articles/${article.id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

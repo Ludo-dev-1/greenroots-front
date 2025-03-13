@@ -115,7 +115,7 @@ export default function EditModal({
         };
 
         // Envoi de la requête PATCH à l'API pour mettre à jour l'article
-        const res = await fetch(`https://donovangrout-server.eddi.cloud/api/articles/${article.id}`, {
+        const res = await fetch(`http://localhost:3000/api/articles/${article.id}`, {
           method: "PATCH",
           headers,
           body: JSON.stringify(payload),
