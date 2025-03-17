@@ -83,7 +83,7 @@ const fetchmethod = {
   // Fetch de tous les articles (arbres, boutique)
   getArticle: async (): Promise<Itrees[]> => {
     try {
-      const response = await fetch("https://greenrootsapi.zapto.org//boutique", {
+      const response = await fetch("https://greenrootsapi.zapto.org/boutique", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
