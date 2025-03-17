@@ -48,7 +48,7 @@ const fetchmethod = {
   // Fetch des derniers articles (arbres, accueil )
   getNewArticle: async (): Promise<Itrees[]> => {
     try {
-      const response = await fetch("http://167.71.139.223/", {
+      const response = await fetch("https://greenrootsapi.zapto.org/", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -83,7 +83,7 @@ const fetchmethod = {
   // Fetch de tous les articles (arbres, boutique)
   getArticle: async (): Promise<Itrees[]> => {
     try {
-      const response = await fetch("http://167.71.139.223/boutique", {
+      const response = await fetch("https://greenrootsapi.zapto.org//boutique", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
