@@ -48,7 +48,7 @@ const fetchmethod = {
   // Fetch des derniers articles (arbres, accueil )
   getNewArticle: async (): Promise<Itrees[]> => {
     try {
-      const response = await fetch("http://localhost:3000/", {
+      const response = await fetch("http://167.71.139.223/", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -64,7 +64,7 @@ const fetchmethod = {
           ...article,
           Picture: {
             ...article.Picture,
-            url: article.Picture?.url.replace("https://localhost:3000/", "https://donovangrout-server.eddi.cloud/")
+            url: article.Picture?.url.replace("https://localhost:3001/", "https://donovangrout-server.eddi.cloud/")
           },
           categories: article.categories || { name: "Catégorie par défaut" },
         }));
@@ -83,7 +83,7 @@ const fetchmethod = {
   // Fetch de tous les articles (arbres, boutique)
   getArticle: async (): Promise<Itrees[]> => {
     try {
-      const response = await fetch("http://localhost:3000/boutique", {
+      const response = await fetch("http://167.71.139.223/boutique", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -98,7 +98,7 @@ const fetchmethod = {
           ...article,
           Picture: {
             ...article.Picture,
-            url: article.Picture?.url.replace("https://localhost:3000/", "https://donovangrout-server.eddi.cloud/")
+            url: article.Picture?.url.replace("https://localhost:3000/", "http://167.71.139.223")
           },
           categories: article.categories || { name: "Catégorie par défaut" },
         }));
