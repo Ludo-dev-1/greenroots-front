@@ -90,6 +90,9 @@ const fetchmethod = {
           "x-api-key": "123456789",
         },
       });
+      if (!response.ok) {
+        throw new Error(`Erreur HTTP: ${response.status}`);
+      }
       const data = await response.json();
       console.log("Données reçues :", data);
 
@@ -98,7 +101,9 @@ const fetchmethod = {
           ...article,
           Picture: {
             ...article.Picture,
-            url: article.Picture?.url.replace("https://localhost:3000/", "http://167.71.139.223")
+            url: article.Picture?.url.startsWith("https://localhost:3000/")
+              ? article.Picture.url.replace("https://localhost:3000/", "http://167.71.139.223")
+              : article.Picture?.url
           },
           categories: article.categories || { name: "Catégorie par défaut" },
         }));
