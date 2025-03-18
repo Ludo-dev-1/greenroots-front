@@ -34,7 +34,7 @@ export default function FakePayment({ isDarkMode }: { isDarkMode: boolean }) {
       console.log("\ud83d\udce6 Données envoyées :", JSON.stringify(orderData, null, 2));
 
       // Envoie la commande au serveur
-      const response = await fetch("http://localhost:3000/commande", {
+      const response = await fetch("https://greenrootsapi.zapto.org/commande", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

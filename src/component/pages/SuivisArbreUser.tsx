@@ -30,7 +30,7 @@ export default function SuivisArbresUser({ isDarkMode }: { isDarkMode: boolean }
 
       // Requête API pour récupérer le suivi des commandes
       const response = await fetch(
-        `http://localhost:3000/${isAdmin ? "api" : "compte"}/commandes/${orderId}/suivi?timestamp=${Date.now()}`,
+        `https://greenrootsapi.zapto.org/${isAdmin ? "api" : "compte"}/commandes/${orderId}/suivi?timestamp=${Date.now()}`,
         {
           method: "GET",
           headers: {

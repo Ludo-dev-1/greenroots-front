@@ -50,7 +50,7 @@ export default function DesktopHeader({ isDarkMode, setIsDarkMode, setIsProtecte
   return (
 
     <header className={`fixed z-30 ${isDarkMode ? "bg-dark-secondary" : "bg-light-secondary"} px-4  w-full h-24  2xl:h-30  flex items-center justify-between shadow-lg z-10000  `}>
-      <div className={`flex items-center gap-10 text-white font-title text-xl 2xl:text-3xl`}>
+      <div className={"flex items-center gap-10 text-white font-title text-xl 2xl:text-3xl"}>
         {/* Logo */}
         <Link to="/">
           <img className="h-16 rounded-lg 2xl:w-25 2xl:h-25" src="/icons/logo.webp" alt="Logo" />
@@ -58,7 +58,7 @@ export default function DesktopHeader({ isDarkMode, setIsDarkMode, setIsProtecte
       </div>
       {/* Navigation */}
       <nav className="cursor-pointer 2xl:ml-60">
-        <ul className={`flex items-center lg:gap-8 xl:gap-14 text-white font-title text-xl 2xl:text-3xl `}>
+        <ul className={"flex items-center lg:gap-8 xl:gap-14 text-white font-title text-xl 2xl:text-3xl "}>
           <li>
             <Link to="/" className={`group relative px-4 py-2  transition ${isDarkMode ? "text-white" : "text-black"}`}>
               Accueil
@@ -72,14 +72,14 @@ export default function DesktopHeader({ isDarkMode, setIsDarkMode, setIsProtecte
             </Link>
           </li>
           <li
-            onClick={() => { handleProtectedRoute("historique") }}
+            onClick={() => { handleProtectedRoute("historique"); }}
             className={`group relative px-4 py-2  transition ${isDarkMode ? "text-white" : "text-black"}`}>
             Historique
             <span className={`absolute left-0 bottom-0 w-full h-1  ${isDarkMode ? "bg-white" : "bg-black"} scale-x-0 group-hover:scale-x-100 transition-transform`}></span>
 
           </li>
           <li
-            onClick={() => { handleProtectedRoute("suivis") }}
+            onClick={() => { handleProtectedRoute("suivis"); }}
             className={`group relative px-4 py-2  transition ${isDarkMode ? "text-white" : "text-black"}`}>
             Suivis
             <span className={`absolute left-0 bottom-0 w-full h-1  ${isDarkMode ? "bg-white" : "bg-black"} scale-x-0 group-hover:scale-x-100 transition-transform`}></span>
@@ -88,7 +88,7 @@ export default function DesktopHeader({ isDarkMode, setIsDarkMode, setIsProtecte
         </ul>
       </nav>
       {/* Icônes et Actions */}
-      <div className={`flex items-center gap-4`}>
+      <div className={"flex items-center gap-4"}>
         {/* Lien vers le panier avec compteur */}
         <Link to="/panier" className="relative">
           <img className={`h-8 ${isDarkMode && "invert"} cursor-pointer hover:scale-110 transition`} src="/icons/shop-card.svg" alt="Panier" />
@@ -121,7 +121,7 @@ export default function DesktopHeader({ isDarkMode, setIsDarkMode, setIsProtecte
                 showSuccessToast("Vous êtes déconnecté");
                 setTimeout(() => {
                   navigate("/");
-                }, 100)
+                }, 100);
               }}
             >
               <img className={`w-8 h-8 lg:w-6 lg:h-6 ${isDarkMode && "invert"} m-auto`} src="/icons/logout.svg" alt="logo logout" />

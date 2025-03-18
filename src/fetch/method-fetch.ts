@@ -7,7 +7,7 @@ const fetchmethod = {
   getArticlesByAdmin: async (): Promise<Itrees[]> => {
     try {
       const token = localStorage.getItem("token"); // Récupération du token
-      const response = await fetch("http://localhost:3000/api/articles", {
+      const response = await fetch("https://greenrootsapi.zapto.org/api/articles", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -29,7 +29,7 @@ const fetchmethod = {
           ...article,
           Picture: {
             ...article.Picture,
-            url: article.Picture?.url.replace("https://localhost:3000/", "https://donovangrout-server.eddi.cloud/")
+            url: article.Picture?.url.replace("https://localhost:3001/", "https://greenrootsapi.zapto.org/")
           },
           categories: article.categories || { name: "Catégorie par défaut" },
         }));
@@ -137,7 +137,7 @@ const fetchmethod = {
   getHistoryByUser: async (): Promise<Iorder[]> => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:3000/compte/commandes", {
+      const response = await fetch("https://greenrootsapi.zapto.org/compte/commandes", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -161,7 +161,7 @@ const fetchmethod = {
   getUserInfos: async (): Promise<IUserInfos> => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:3000/compte", {
+      const response = await fetch("https://greenrootsapi.zapto.org/compte", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -189,7 +189,7 @@ const fetchmethod = {
   getAllOrders: async (): Promise<Iorder[]> => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:3000/api/commandes", {
+      const response = await fetch("https://greenrootsapi.zapto.org/api/commandes", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -213,7 +213,7 @@ const fetchmethod = {
   getOrderDetailAdmin: async (id: number): Promise<ITracking[]> => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:3000/api/commandes/${id}`,
+      const response = await fetch(`https://greenrootsapi.zapto.org/api/commandes/${id}`,
         {
           method: "GET",
           headers: {
@@ -236,7 +236,7 @@ const fetchmethod = {
   getTrackingByIdAdmin: async (orderId: number, trackinId: number): Promise<ITracking[]> => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:3000/api/commandes/${orderId}/suivi/${trackinId}`,
+      const response = await fetch(`https://greenrootsapi.zapto.org/api/commandes/${orderId}/suivi/${trackinId}`,
         {
           method: "GET",
           headers: {
@@ -260,7 +260,7 @@ const fetchmethod = {
   getTrackingByIdUser: async (orderId: number, trackinId: number): Promise<ITracking[]> => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:3000/compte/commandes/${orderId}/suivi/${trackinId}`,
+      const response = await fetch(`https://greenrootsapi.zapto.org/compte/commandes/${orderId}/suivi/${trackinId}`,
         {
           method: "GET",
           headers: {
@@ -283,7 +283,7 @@ const fetchmethod = {
   getOrderDetailUser: async (id: number): Promise<ITracking[]> => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:3000compte/commandes/${id}`,
+      const response = await fetch(`https://greenrootsapi.zapto.org/commandes/${id}`,
         {
           method: "GET",
           headers: {

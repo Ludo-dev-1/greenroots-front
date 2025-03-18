@@ -30,7 +30,7 @@ export default function Inscription({ isDarkMode }: { isDarkMode: boolean }) {
 
     try {
       // Envoi des données d'inscription au serveur
-      const response = await fetch("http://localhost:3000/inscription", {
+      const response = await fetch("https://greenrootsapi.zapto.org/inscription", {
         method: "POST",
         headers: { "Content-Type": "application/json", "x-api-key": "123456789", },
 
