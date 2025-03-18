@@ -64,7 +64,7 @@ const fetchmethod = {
           ...article,
           Picture: {
             ...article.Picture,
-            url: article.Picture?.url.replace("https://localhost:3001/", "https://donovangrout-server.eddi.cloud/")
+            url: article.Picture?.url.replace("https://localhost:3001/", "https://greenrootsapi.zapto.org/")
           },
           categories: article.categories || { name: "Catégorie par défaut" },
         }));
