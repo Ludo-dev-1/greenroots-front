@@ -7,6 +7,7 @@ const fetchmethod = {
   getArticlesByAdmin: async (): Promise<Itrees[]> => {
     try {
       const token = localStorage.getItem("token"); // Récupération du token
+      console.log("Token récupéré :", token); // Affichage du token dans la console
       const response = await fetch("https://greenrootsapi.zapto.org/api/articles", {
         method: "GET",
         headers: {
