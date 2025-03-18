@@ -106,16 +106,22 @@ const fetchmethod = {
       console.log("Données reçues :", data);
 
       if (data.articles) {
-        const mergedArticles = data.articles.map((article: Itrees) => ({
-          ...article,
-          Picture: {
-            ...article.Picture,
-            url: article.Picture?.url.startsWith("https://localhost:3000/")
-              ? article.Picture.url.replace("https://localhost:3000/", "http://167.71.139.223")
-              : article.Picture?.url
-          },
-          categories: article.categories || { name: "Catégorie par défaut" },
-        }));
+        const mergedArticles = data.articles.map((article: Itrees) => {
+          // Ici, tu remplaces l'URL de l'image par l'URL HTTPS correcte
+          const updatedPictureUrl = article.Picture?.url.replace(
+            "http://167.71.139.223", // L'ancienne URL non sécurisée
+            "https://greenrootsapi.zapto.org" // L'URL sécurisée
+          );
+
+          return {
+            ...article,
+            Picture: {
+              ...article.Picture,
+              url: updatedPictureUrl || "", // Utilisation de l'URL mise à jour
+            },
+            categories: article.categories || { name: "Catégorie par défaut" },
+          };
+        });
         return mergedArticles;
       } else {
         console.error("Format inattendu de l'API", data);
