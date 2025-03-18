@@ -92,7 +92,7 @@ export default function CreateModal({
       console.log("🟢 Données envoyées à l'API :", dataToSend);
 
       try {
-        const response = await fetch("http://localhost:3000/api/articles", {
+        const response = await fetch("https://greenrootsapi.zapto.org/api/articles", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
