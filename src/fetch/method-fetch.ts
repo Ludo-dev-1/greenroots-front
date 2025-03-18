@@ -18,6 +18,9 @@ const fetchmethod = {
         },
       });
 
+      console.log(response);
+
+
       if (!response.ok) {
         throw new Error(`Erreur API : ${response.status} - ${await response.text()}`);
       }
