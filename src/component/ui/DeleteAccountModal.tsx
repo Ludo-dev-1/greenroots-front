@@ -27,7 +27,7 @@ export default function DeleteAccountModal({
     }
 
     try {
-      const response = await fetch("http://localhost:3000/compte", {
+      const response = await fetch("https://greenrootsapi.zapto.org/compte", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
