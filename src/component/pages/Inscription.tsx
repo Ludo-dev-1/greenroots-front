@@ -138,7 +138,7 @@ export default function Inscription({ isDarkMode }: { isDarkMode: boolean }) {
         </div>
         <span className="italic mx-10  md:flex md:flex-col md:mx-auto 2xl:w-2xl 2xl:text-2xl sm:w-sm lg:w-lg md:w-md ">
           <p >
-          Le mot de passe doit contenir au moins 14 caractères et au moins une lettre minuscule, une lettre majuscule, un chiffre et un caractère spécial parmi : !, @, #, $, %, ^, &, *.
+          Le mot de passe doit contenir au moins 14 caractères et au moins une lettre minuscule, une lettre majuscule, un chiffre et un caractère spécial parmi : !, @, #, $, %, ^, &, *. Oui on ne lesine pas avec la sécurité chez GreenRoots !
           </p>
         </span>
 
