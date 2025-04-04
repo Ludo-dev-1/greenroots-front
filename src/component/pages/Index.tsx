@@ -83,6 +83,7 @@ export default function Index({ setIsOpenDetail, setSelectedArticle, isDarkMode,
             ) : (
               <p className="text-white">Aucun article pour le moment</p>
             )}
+
           </div>
         </section>
       </main>
