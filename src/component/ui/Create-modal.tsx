@@ -28,7 +28,7 @@ export default function CreateModal({
 
     const [formData, setFormData] = useState<FormDataState>({
       name: "",
-      image: null, // ✅ Correct
+      image: null,
       price: "",
       description: "",
       category: "Arbres d'ornement",
@@ -114,6 +114,7 @@ export default function CreateModal({
         setArticles((prevArticles) => [...prevArticles, data.article]);
         setOpenCreateModal(false);
         showSuccessToast("Article ajouté avec succès !");
+        window.location.reload();
         // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
       } catch (error) {
         showErrorToast("Erreur lors de l'ajout de l'article");

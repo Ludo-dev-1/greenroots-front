@@ -66,7 +66,7 @@ export default function Index({ setIsOpenDetail, setSelectedArticle, isDarkMode,
           <h2 className={`text-3xl font-title font-bold text-center ${isDarkMode ? "text-light-primary" : "text-black"}  mb-6 2xl:text-5xl 2xl:pb-10`}>
             🌱  Nos derniers arbres
           </h2>
-          <div className="flex flex-col gap-6 md:grid md:grid-cols-3 md:gap-6 2xl:w-5/6 m-auto pb-15">
+          <div className="flex flex-col gap-6 md:grid md:grid-cols-3 md:gap-8 2xl:w-5/6 m-auto pb-15">
             {/* Affichage des cartes des derniers articles */}
             {newarticle.length > 0 ? (
               newarticle.slice(0, 3).map((article) => (
