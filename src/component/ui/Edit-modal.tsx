@@ -122,7 +122,7 @@ export default function EditModal({
           body: JSON.stringify(payload),
         });
         // Affichage de la réponse dans la console pour le débogage
-        console.log("Réponse de l'API :", res);
+        console.log("Réponse de l'API :", payload, res);
 
         // Lecture de la réponse sous forme de texte
         const text = await res.text();
