@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useState } from "react";
 import { Itrees } from "../../../type/type";
 import { showErrorToast, showSuccessToast } from "../../../utils/toast";
@@ -120,6 +121,8 @@ export default function EditModal({
           headers,
           body: JSON.stringify(payload),
         });
+        // Affichage de la réponse dans la console pour le débogage
+        console.log("Réponse de l'API :", res);
 
         // Lecture de la réponse sous forme de texte
         const text = await res.text();
