@@ -23,6 +23,7 @@ import { useLoaderStore } from "./Auth/loaderStore";
 import Loader from "./component/layout/Loader";
 import ProtectedModal from "./component/ui/ProtectedModal";
 import ProtectedRoute from "./component/layout/ProtectedRoute";
+import { useAuthStore } from "./Auth/authStore";
 
 
 
@@ -56,6 +57,24 @@ function App() {
       hideLoader();
     }, 1500); // 1.5 secondes de chargement initial
   }, [showLoader, hideLoader]);
+
+  const {logout} = useAuthStore();
+
+  useEffect(() => {
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      // Appelle ta fonction logout ici
+      logout();
+
+      // Pour certains navigateurs, tu dois définir returnValue
+      event.preventDefault();
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
 
   // Affichage de l'app
   return (

@@ -73,7 +73,7 @@ const fetchmethod = {
 
       if (data.articles) {
         const mergedArticles = data.articles.map((article: Itrees) => {
-          // Ici, tu remplaces l'URL de l'image par l'URL HTTPS correcte
+          // Remplace l'URL de l'image par l'URL HTTPS correcte
           const updatedPictureUrl = article.Picture?.url.replace(
             "http://167.71.139.223", // L'ancienne URL non sécurisée
             "https://greenrootsapi.zapto.org" // L'URL sécurisée

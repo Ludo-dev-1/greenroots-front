@@ -7,11 +7,6 @@ import { useAuthStore } from "../../Auth/authStore";
 interface HistoriqueProps {
 
     isDarkMode: boolean;
-
-    setIsOpenDetail: (isOpen: boolean) => void;
-
-    setSelectedArticle: (article: Itrees | null) => void;
-
     article: Itrees | null;
 
 }
