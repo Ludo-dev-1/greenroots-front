@@ -74,7 +74,7 @@ function App() {
     return () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };
-  }, []);
+  }, [logout]);
 
   // Affichage de l'app
   return (
@@ -144,7 +144,7 @@ function App() {
             path="/historique"
             element={
               <ProtectedRoute>
-                {<Historique isDarkMode={isDarkMode} setIsOpenDetail={setIsOpenDetail} setSelectedArticle={setSelectedArticle} article={selectedArticle} />}
+                {<Historique isDarkMode={isDarkMode}  article={selectedArticle} />}
               </ProtectedRoute>
             }
           />
