@@ -59,7 +59,6 @@ export default function FakePayment({ isDarkMode }: { isDarkMode: boolean }) {
       // Redirige vers la page d'accueil après 2 secondes
       setTimeout(() => {
         navigate("/");
-        window.location.reload();
       }, 2000);
     } catch {
       showErrorToast("Erreur lors du paiement. Veuillez réessayer.");
