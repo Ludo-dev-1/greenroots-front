@@ -2,12 +2,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Product } from "../../../type/type";
 import { showErrorToast, showSuccessToast } from "../../../utils/toast";
+import useCartStore from "../../Auth/cartStore";
 
 export default function FakePayment({ isDarkMode }: { isDarkMode: boolean }) {
   const navigate = useNavigate();
   const [isProcessing, setIsProcessing] = useState(false); // Indique si le paiement est en cours
   const [paymentSuccess, setPaymentSuccess] = useState(false); // Indique si le paiement a réussi
   const [cardNumber, setCardNumber] = useState(""); // Stocke le numéro de carte entré par l'utilisateur
+  const clearCart = useCartStore((state) => state.clearCart); // Fonction pour vider le panier
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault(); // Empêche le rechargement de la page lors de la soumission du formulaire
@@ -52,7 +54,7 @@ export default function FakePayment({ isDarkMode }: { isDarkMode: boolean }) {
       const data = await response.json();
       console.log("\u2705 Commande créée :", data);
 
-      localStorage.removeItem("cart"); // Vide le panier après un paiement réussi
+      clearCart(); // Vide le panier après le paiement
       setPaymentSuccess(true); // Active l'état de succès du paiement
       showSuccessToast("Merci pour votre achat !");
 
