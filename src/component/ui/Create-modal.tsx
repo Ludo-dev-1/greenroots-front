@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Itrees } from "../../../type/type";
 import { showErrorToast, showSuccessToast } from "../../../utils/toast";
-import { useNavigate } from "react-router";
+
 
 
 export default function CreateModal({
@@ -49,7 +49,7 @@ export default function CreateModal({
       }
     };
 
-    const navigate = useNavigate();
+
 
     const convertToBase64 = (file: File): Promise<string> => {
       return new Promise((resolve, reject) => {
