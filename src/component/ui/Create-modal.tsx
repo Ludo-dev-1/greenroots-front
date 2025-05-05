@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Itrees } from "../../../type/type";
 import { showErrorToast, showSuccessToast } from "../../../utils/toast";
+import { useNavigate } from "react-router";
 
 
 export default function CreateModal({
@@ -47,6 +48,8 @@ export default function CreateModal({
         }));
       }
     };
+
+    const navigate = useNavigate();
 
     const convertToBase64 = (file: File): Promise<string> => {
       return new Promise((resolve, reject) => {
@@ -114,7 +117,7 @@ export default function CreateModal({
         setArticles((prevArticles) => [...prevArticles, data.article]);
         setOpenCreateModal(false);
         showSuccessToast("Article ajouté avec succès !");
-        window.location.reload();
+        navigate(0);
         // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
       } catch (error) {
         showErrorToast("Erreur lors de l'ajout de l'article");
