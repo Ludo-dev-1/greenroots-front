@@ -60,6 +60,24 @@ export default function CreateModal({
       });
     };
 
+    const fetchArticles = async () => {
+      try {
+        const response = await fetch("https://greenrootsapi.zapto.org/api/articles", {
+          headers: {
+            "x-api-key": "123456789",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        const data = await response.json();
+        if (response.ok) {
+          setArticles(data.articles); // ou data selon la structure de réponse
+        } else {
+          showErrorToast("Erreur lors du rafraîchissement des articles");
+        }
+      } catch (error) {
+        showErrorToast("Erreur lors du chargement des articles");
+      }
+    };
 
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -114,10 +132,9 @@ export default function CreateModal({
           return;
         }
 
-        setArticles((prevArticles) => [...prevArticles, data.article]);
+        await fetchArticles();
         setOpenCreateModal(false);
         showSuccessToast("Article ajouté avec succès !");
-        navigate("/boutique");
         // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
       } catch (error) {
         showErrorToast("Erreur lors de l'ajout de l'article");
