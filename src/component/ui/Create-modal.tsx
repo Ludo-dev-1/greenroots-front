@@ -74,7 +74,8 @@ export default function CreateModal({
         } else {
           showErrorToast("Erreur lors du rafraîchissement des articles");
         }
-      } catch (error) {
+      // eslint-disable-next-line no-unused-vars
+      } catch {
         showErrorToast("Erreur lors du chargement des articles");
       }
     };
