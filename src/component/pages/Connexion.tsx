@@ -37,8 +37,7 @@ export default function Connexion({ isDarkMode }: { isDarkMode: boolean }) {
 
       // Mise à jour du store avec le token
       login(data.token);
-
-      console.log("Connexion réussie :", data);
+      // Affichage d'un message de succès
       showSuccessToast("Connexion réussie !");
       navigate("/"); // Redirection vers la page d'accueil
     } catch (error) {
