@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router";
 import { useAuthStore } from "../../Auth/authStore";
 import { useState } from "react";
-import { jwtDecode } from "jwt-decode";
+
 import { showErrorToast, showSuccessToast } from "../../../utils/toast";
 
 export default function Connexion({ isDarkMode }: { isDarkMode: boolean }) {
@@ -33,9 +33,7 @@ export default function Connexion({ isDarkMode }: { isDarkMode: boolean }) {
         throw new Error(data.message || "Erreur lors de la connexion");
       }
 
-      // Décodage du token pour vérification (optionnel)
-      const decodedToken = jwtDecode(data.token);
-      console.log("Token décodé :", decodedToken);
+
 
       // Mise à jour du store avec le token
       login(data.token);
